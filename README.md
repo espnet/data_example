@@ -31,7 +31,7 @@ Notes:
     uttidB ./relative/path/uttidB.wav
     ```
   - Maybe, we assume `single channel` and `16bit-pcm` audio file. Any sampling rates are okay. 
-  - (THIS IS EXTENSION BY ESPNET, NOT KALDI FORMAT) Not only `wav`, but also `falc` can be used (Supported audio format can be extended)
+  - (THIS IS EXTENSION BY ESPNET, NOT KALDI FORMAT) Not only `wav`, but also `flac` can be used (Supported audio format can be extended)
       ```
       uttidA a.flac
       uttidB b.flac
