@@ -30,6 +30,11 @@ Notes:
     uttidA /absolute/path/uttidA.wav
     uttidB ./relative/path/uttidB.wav
     ```
+- (THIS IS EXTENSION BY ESPNET, NOT KALDI FORMAT) Not only `wav`, but also `falc` can be used (Supported audio format can be extended)
+    ```
+    uttidA a.flac
+    uttidB b.flac
+    ``` 
 - `wavs` directory exists at the same level of `data` in this example, but this is not requirement.
 - If you don't have speaker information, it can be dummy data because actually most recipes doesn't use speaker information.
     ```
