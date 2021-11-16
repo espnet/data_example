@@ -44,7 +44,7 @@ Notes:
     utils/utt2spk_to_spk2utt.pl data/train/utt2spk > data/train/spk2utt
     utils/spk2utt_to_utt2spk.pl data/train/spk2utt > data/train/utt2spk
     ```
-- To check and force your directory to satisfy expected format, use `utils/validate_data_dir.sh` or utils/fix_data_dir.sh
+- To check and force your directory to satisfy expected format, use [utils/validate_data_dir.sh](https://github.com/kaldi-asr/kaldi/blob/master/egs/wsj/s5/utils/validate_data_dir.sh) and [utils/fix_data_dir.sh](https://github.com/kaldi-asr/kaldi/blob/master/egs/wsj/s5/utils/fix_data_dir.sh)
     ```
     # check
     utils/validate_data_dir.sh --no-feats data/train
