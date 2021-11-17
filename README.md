@@ -30,7 +30,11 @@ Notes:
     uttidA /absolute/path/uttidA.wav
     uttidB ./relative/path/uttidB.wav
     ```
-  - Maybe, we assume `single channel` and `16bit-pcm` audio file. Any sampling rates are okay. 
+  - Maybe, we assume `monaural` and `16bit-signed-pcm` audio file. Any sampling rates are okay. 
+    -  Please check your audio format in advance using `sox` or `ffmpeg` for example.
+        ```
+        soxi youraudio.wav
+        ```
   - (THIS IS EXTENSION BY ESPNET, NOT KALDI FORMAT) Not only `wav`, but also `flac` can be used (Supported audio format can be extended)
       ```
       uttidA a.flac
