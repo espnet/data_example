@@ -30,7 +30,7 @@ Notes:
     uttidA /absolute/path/uttidA.wav
     uttidB ./relative/path/uttidB.wav
     ```
-  - Maybe, we assume `monaural` and `16bit-signed-pcm` audio file. Any sampling rates are okay. 
+  - Maybe, we assume `monaural` and `16bit-signed-integer-pcm` audio file. Any sampling rates are okay. 
     -  Please check your audio format in advance using `sox` or `ffmpeg` for example.
         ```
         soxi youraudio.wav
