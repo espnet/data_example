@@ -65,7 +65,7 @@ Notes:
     
 ## [Option] `segments`: Chuking long audio files into short segments
 
-If your audio data is long recording and each audio file includes multiple utterances in each section, you need to put `segments` file to specify the start time and end time of each utterance. The format is `<utterance_id> <wav_id> <start_time> <end_time>`.
+If your audio data is long recording and each audio file includes multiple utterances, you need to put `segments` file to specify the start time and end time of each utterance. The format is `<utterance_id> <wav_id> <start_time> <end_time>` (in seconds).
 
 ```
 sw02001-A_000098-001156 sw02001-A 0.98 11.56
