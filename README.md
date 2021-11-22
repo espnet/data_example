@@ -5,10 +5,10 @@ An exmpale of the data structure required by ESPnet. The required format can be 
 ```
 |-- data
 |   |-- test
-|   |   |-- spk2utt
-|   |   |-- text
-|   |   |-- utt2spk
-|   |   `-- wav.scp
+|   |   |-- spk2utt  # Mapping a speaker-ID to a list of utterance-IDs
+|   |   |-- text     # Mapping a utterance-ID to a text
+|   |   |-- utt2spk  # Mappinng a utterance-ID to a speaker-ID
+|   |   `-- wav.scp  # Mappinng a utterance-ID to a path of audio file
 |   |-- train
 |   |   |-- spk2utt
 |   |   |-- text
@@ -25,7 +25,7 @@ An exmpale of the data structure required by ESPnet. The required format can be 
 Notes:
 
 - The directory name in `data` is arbitrary: `train`, `valid`, and `test` can be `tr`, `cv`, and `eval` for example.
-- The wav path for `wav.scp` can be both absolute path or relative path from the base directory ( `egs2/<corpus-name>/<task-name>`, e.g. `egs2/an4/asr1`).
+- The path for `wav.scp` can be both absolute path or relative path from the base directory ( `egs2/<corpus-name>/<task-name>`, e.g. `egs2/an4/asr1`).
     ```
     uttidA /absolute/path/uttidA.wav
     uttidB ./relative/path/uttidB.wav
@@ -41,7 +41,7 @@ Notes:
       uttidB b.flac
       ``` 
   - `wavs` directory exists at the same level of `data` in this example, but this is not requirement.
-- If you don't have speaker information, it can be dummy data because actually most recipes doesn't use speaker information.
+- If you don't have speaker information, it can be dummy data because actually most recipes don't use speaker information.
     ```
     uttidA dummy
     uttidB dummy
@@ -60,4 +60,21 @@ Notes:
     utils/validate_data_dir.sh --no-feats data/train
     # Force format (This is irreversible change)
     utils/fix_data_dir.sh data/train
+    ```
+    
+    
+## [Option] `segments`: Chuking long audio files into short segments
+
+    If your audio data is long recording and each audio file includes multiple utterances in each section, you need to put `segments` file to specify the start time and end time of each utterance. The format is `<utterance_id> <wav_id> <start_time> <end_time>`.
+
+    ```
+    sw02001-A_000098-001156 sw02001-A 0.98 11.56
+    ...
+    ```
+    
+    Note that if using `segments`, `wav.scp` has `<wav_id>` instead of `utterance_id`.
+    
+    ```
+    sw02001-A /path/to/sw02001-A.wav
+    ...
     ```
