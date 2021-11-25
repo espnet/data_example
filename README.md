@@ -65,6 +65,14 @@ Notes:
     
 ## [Option] `segments`: Chuking long audio files into short segments
 
+```
+|-- segments
+|-- spk2utt
+|-- text
+|-- utt2spk
+`-- wav.scp
+```
+
 If your audio data is long recording and each audio file includes multiple utterances, you need to put `segments` file to specify the start time and end time of each utterance. The format is `<utterance_id> <wav_id> <start_time> <end_time>` (in seconds).
 
 ```
@@ -73,8 +81,32 @@ sw02001-A_000098-001156 sw02001-A 0.98 11.56
 ```
     
 Note that if using `segments`, `wav.scp` has `<wav_id>` instead of `utterance_id`.
-    
+
 ```
 sw02001-A /path/to/sw02001-A.wav
 ...
 ```
+
+## [Option] Change format using the pipeline mechanism of Unix system
+
+`wav.scp` provides a feature to describe the file format of wavfiles converted by an arbitral command **without saving the files actually**. The usage is as following:
+
+```
+foo_id some_command /path/to/foo.wav |
+```
+
+Note that in our style, the environment variable for scripts are set by `path.sh`, so please check that the command exists in the `${PATH}`.
+
+
+If a line ends with `|`, it indicates using this pipeline mechanism and our Python script derives the output data from the command via pipeline (We are using https://github.com/nttcslab-sp/kaldiio).
+
+```
+e.g. Channel selection
+sox stereo.wav -c 1 |
+sox stereo.wav -c 2 |
+```
+
+
+## [Tips] `utils/fix_data_dir.sh`: Create a subset from selected data
+
+## [Tips] `utils/combine_data.sh`: Combine multiple datadirs into a datadir
