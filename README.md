@@ -101,9 +101,12 @@ Note that in our style, the environment variable for scripts are set by `path.sh
 If a line ends with `|`, it indicates using this pipeline mechanism and our Python script derives the output data from the command via pipeline (We are using https://github.com/nttcslab-sp/kaldiio).
 
 ```
+e.g. Change sampling rate, encoding, bits, etc.
+sox input.wav -b16 -e unsigned-integer -r 16000 -t wav - |
+
 e.g. Channel selection
-sox stereo.wav -c 1 |
-sox stereo.wav -c 2 |
+sox stereo.wav -c 1 -t wav - |
+sox stereo.wav -c 2 -t wav - |
 ```
 
 
