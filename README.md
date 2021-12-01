@@ -21,8 +21,22 @@ An exmpale of the data structure required by ESPnet. The required format can be 
 |       `-- wav.scp
 ```
 
+## Concept
 
-Notes:
+ESPnet follows the data strcutre developed by [Kaldi-asr](https://github.com/kaldi-asr/kaldi): A data-directory must contain some texts, `wav.scp`, `text`, and etc. which have common format to describe DNN corpus. The format is `space` separated and must be two columns. The first column is taken as `ID` and the second is some value.
+
+
+```
+<ID> <value>
+<ID> <value>
+...
+```
+
+e.g. `wav.scp` shows `<Sample ID> <Wave file path>`.
+
+
+
+## Notes
 
 - The directory name in `data` is arbitrary: `train`, `valid`, and `test` can be `tr`, `cv`, and `eval` for example.
 - The path for `wav.scp` can be both absolute path or relative path from the base directory ( `egs2/<corpus-name>/<task-name>`, e.g. `egs2/an4/asr1`).
@@ -61,7 +75,16 @@ Notes:
     # Force format (This is irreversible change)
     utils/fix_data_dir.sh data/train
     ```
-    
+- It's okay to contains the other files (`foo.txt` in the following example) in the data directory. They are not referred. 
+    ```
+    data
+      `-- test
+        |-- foo.txt
+        |-- spk2utt
+        |-- text 
+        |-- utt2spk
+        `-- wav.scp
+    ```
     
 ## [Option] `segments`: Chuking long audio files into short segments
 
